@@ -101,7 +101,6 @@
                 <label for="role">Role</label>
                 <select id="role" name="role" class="form-control" required>
                     <option value="" selected disabled>Select Role</option>
-                    <option value="admin">Admin</option>
                     <option value="author">Author</option>
                     <option value="visitor">Visitor</option>
                 </select>
