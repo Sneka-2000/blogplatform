@@ -80,10 +80,10 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="tags">Add Tags:</label>
-                                    <input type="text" id="tags" name="tags" placeholder="Add tags separated by commas" required>
+                                    <input data-role="tagsinput" type="text" name="tags" >  
                                 </div>
 
-
+                            
 
                                 <button type="submit" class="btn btn-primary">Create</button>
                             </form>

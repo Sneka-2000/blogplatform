@@ -27,10 +27,11 @@
     <link href="assets/dynamic/css/sidebar-menu.css" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="assets/dynamic/css/app-style.css" rel="stylesheet" />
+
     <!-- Include Tagify CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.10.2/tagify.min.css">
-
-
+    
+    
 
 </head>
 <!--Start sidebar-wrapper-->
@@ -178,6 +179,7 @@
     <script src="assets/dynamic/js/app-script.js"></script>
     <!-- Chart js -->
 
+    
     <script src="assets/dynamic/plugins/Chart.js/Chart.min.js"></script>
 
     <!-- Index js -->

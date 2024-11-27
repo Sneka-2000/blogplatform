@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class BlogTag extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = ['name','blog_id','tag_id'];
     public function blogs()
     {
-        return $this->belongsToMany(Blog::class, 'blog_tags', 'tag_id', 'blog_id');
+        return $this->belongsToMany(Blog::class);
     }
-    
-    
-    
-
 }

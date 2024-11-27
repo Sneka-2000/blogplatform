@@ -29,7 +29,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/create/admin_blog', [AdminController::class, 'store'])->name('admin.store');
     Route::get('/comments', [AdminController::class, 'comment'])->name('admin.comment');
     Route::patch('admin/comment/{commentId}', [AdminController::class, 'handleCommentAction'])->name('admin.action');
-    Route::put('/users/{id}', [AdminController::class, 'update'])->name('users.update');
+    Route::get('/users/update/{id}', [AdminController::class, 'update'])->name('users.update');
+    Route::match(['get', 'post'], '/users/role/{id}', [AdminController::class, 'role'])->name('users.role');
+
 
 });
 Route::middleware(['auth', 'author'])->group(function () {

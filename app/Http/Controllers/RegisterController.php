@@ -27,7 +27,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
-            'is_active' => $request->is_active ?? 0, 
+            
                 ]);
         
 
@@ -56,23 +56,31 @@ class RegisterController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        
+    
         $user = User::where('email', $request->email)->first();
-        
-        if ($user && Hash::check($request->password, $user->password)) {
+    
+        if ($user) {
+            if (!Hash::check($request->password, $user->password)) {
+                return redirect()->back()->with('error', 'Invalid email or password');
+            }
+    
+            if ($user->status === 0) {
+                return redirect()->back()->with('error', 'Your account is disabled. Please contact the administrator.');
+            }
+    
             Auth::login($user);
-        
-            if (Auth::user()->role === 'admin') {
+    
+            // Redirect based on role
+            if ($user->role === 'admin') {
                 return redirect()->route('admin.dashboard'); 
-            } elseif (Auth::user()->role === 'author') {
+            } elseif ($user->role === 'author') {
                 return redirect()->route('author.dashboard'); 
-            } elseif (Auth::user()->role === 'visitor') {
+            } elseif ($user->role === 'visitor') {
                 return redirect('/'); 
             }
         }
-        
+    
         return redirect()->back()->with('error', 'Invalid email or password');
-        
     }
     
     public function logout(){

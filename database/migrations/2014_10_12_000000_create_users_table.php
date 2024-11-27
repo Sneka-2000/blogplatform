@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->default('admin');  
-            $table->tinyInteger('is_active')->default(0);
+            $table->integer('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
 
@@ -31,6 +31,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-        $table->tinyInteger('is_active')->default(0)->change();        }
+        }
     
 };

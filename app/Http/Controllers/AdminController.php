@@ -13,11 +13,11 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        $users = User::select('name', 'role', 'created_at')
-                 ->whereIn('role', ['author', 'visitor'])
-                 ->get();
+        $users = User::whereIn('role', ['author', 'visitor'])
+        ->select('id','name', 'role', 'status', 'created_at')
+        ->get();
 
-        return view('admin.dashboard', compact('users'));
+return view('admin.dashboard', ['users' => $users]);
     }
    
     public function blog()
@@ -93,20 +93,39 @@ class AdminController extends Controller
 
 
   
-    public function update(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
-    
-        $validated = $request->validate([
+public function role(Request $request, $id)
+{
+    $user = User::find($id);
+
+    if ($user) {
+        $request->validate([
             'role' => 'required|in:author,visitor',
         ]);
-    
-        $user->update([
-            'role' => $validated['role'],
-        ]);
-    
-        return redirect()->route('users.index')->with('success', 'User updated successfully!');
+
+        $user->role = $request->role;
+        $user->save();
+
+        return back()->with('success', 'User role updated successfully!');
     }
+
+    return back()->with('error', 'User not found.');
+}
+
+
+
+  public function update($userId)
+{
+    $user = User::find($userId);
+
+    if ($user) {
+       
+        $user->status = !$user->status;
+        $user->save();
+    }
+
+    return back()->with('success', 'User status updated successfully!');
+}
+
     
 
    
