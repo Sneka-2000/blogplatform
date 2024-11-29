@@ -13,18 +13,27 @@ class CommentController extends Controller
         $blogs = Blog::paginate(4);
         return view('static.blog', compact('blogs'))->with('success', 'Your comment has been submitted and is awaiting approval.');
     }
-    public function show($id)
+     public function show($id)
     {
-        
-        $blog = Blog::find($id); 
+       
+        $blog = Blog::find($id);
+    
         $comments = ViewComment::where('status', 'approved')->get();
-
-
-        if (!$blog) {
-            return abort(404, 'Blog not found'); 
+    
+        $sentences = [];
+    
+        if ($blog) {
+           
+            if (!empty($blog->tags)) {
+                $sentences = explode('~', $blog->tags);
+            }
+        } else {
+            return back()->with('error', 'Blog not found.');
         }
     
-        return view('static.singleblog', compact('blog','comments'))->with('success', 'Your comment has been submitted and is awaiting approval.'); // Pass the single blog to the view
+        
+        return view('static.singleblog', compact('blog', 'comments', 'sentences'))
+            ->with('success', 'Your comment has been submitted and is awaiting approval.');
     }
   
     
