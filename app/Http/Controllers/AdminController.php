@@ -48,7 +48,7 @@ return view('admin.dashboard', ['users' => $users]);
         $blog->title = $request->title;
         $blog->description = $request->description;
         $blog->image = $imagePath;
-        $blog->tags = json_encode(explode(',', $request->tags)); 
+        $blog->tags = $request->tags; 
         $blog->created_by = auth()->id(); 
         $blog->user_type = 'admin'; 
         $blog->save();
