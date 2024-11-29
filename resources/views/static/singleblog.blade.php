@@ -124,6 +124,41 @@
         }
         }
 
+        .tag-box {
+            background-color: #f8f9fa;
+            /* Light grey background */
+            border: 1px solid #e0e0e0;
+            /* Slight border for better definition */
+            border-radius: 12px;
+            /* Rounded corners */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tag-box:hover {
+            transform: translateY(-5px);
+            /* Slight hover effect */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            /* Shadow on hover */
+        }
+
+        .tag-text {
+            color: #343a40;
+            /* Darker grey text */
+            font-weight: 600;
+            /* Bold text */
+        }
+
+        .section_tittle h2 {
+            color: #343a40;
+            /* Title color */
+            font-weight: bold;
+        }
+
+        .product_list .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
     </style>
 
 
@@ -216,7 +251,7 @@
         <section class="section blog-wrap bg-gray">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-12 mb-5">
                                 <div class="single-blog-item">
@@ -242,132 +277,138 @@
 
 
                                         <div class="tag-option mt-5 clearfix">
-                                            <ul class="float-left list-inline">
-                                                <li>Tags:</li>
-
-                                                <li class="list-inline-item"><a href="#"
-                                                        rel="tag">{{ $blog->tags }}</a></li>
-                                            </ul>
-
-                                            <ul class="float-right list-inline">
-                                                <li class="list-inline-item"> Share: </li>
-                                                <li class="list-inline-item">
-                                                    <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL"
-                                                        target="_blank" rel="noopener noreferrer"
-                                                        aria-label="Share on Facebook">
-                                                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL&text=Check%20this%20out!"
-                                                        target="_blank" rel="noopener noreferrer"
-                                                        aria-label="Share on Twitter">
-                                                        <i class="fab fa-twitter" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="https://www.pinterest.com/pin/create/button/?url=YOUR_PAGE_URL"
-                                                        target="_blank" rel="noopener noreferrer"
-                                                        aria-label="Share on Pinterest">
-                                                        <i class="fab fa-pinterest-p" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="https://plus.google.com/share?url=YOUR_PAGE_URL"
-                                                        target="_blank" rel="noopener noreferrer"
-                                                        aria-label="Share on Google Plus">
-                                                        <i class="fab fa-google-plus" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="col-lg-12 mb-5">
-                                <div class="comment-area card border-0 p-5">
-                                    <h4 class="mb-4">{{ $comments->count() }} Comments</h4>
-                                    <ul class="comment-tree list-unstyled">
-                                        @foreach($comments as $comment)
-                                            <li class="mb-5">
-                                                <div class="comment-area-box">
-
-
-                                                    <h5 class="mb-1">{{ $comment->name }}</h5>
-
-
-                                                    <div
-                                                        class="comment-meta mt-4 mt-lg-0 mt-md-0 float-lg-right float-md-right">
-                                                        <a><i class="icofont-reply mr-2 text-muted"></i>Reply |</a>
-                                                        <span class="date-comm">Posted
-                                                            {{ $comment->created_at->format('F d, Y') }}</span>
+                                            <section class="product_list best_seller section_padding">
+                                                <div class="container">
+                                                    <!-- Section Title -->
+                                                    <div class="row justify-content-center mb-4">
+                                                        <div class="col-lg-12 text-center">
+                                                            <div class="section_tittle">
+                                                                <h2>Tags</h2>
+                                                            </div>
+                                                        </div>
                                                     </div>
-
-                                                    <div class="comment-content mt-3">
-                                                        <p>{{ $comment->comment }}</p>
+                                                    <!-- Tags List -->
+                                                    <div class="row">
+                                                        @foreach($sentences as $value)
+                                                            <div class="col-md-4 col-sm-6 mb-4">
+                                                                <div class="tag-box bg-light shadow-sm p-3 rounded">
+                                                                    <div class="text-center">
+                                                                        <h5 class="tag-text">{{ $value }}</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
+                                            </section>
+                                        </div>
+
+
+
+                                        <ul class="float-right list-inline">
+                                            <li class="list-inline-item"> Share: </li>
+                                            <li class="list-inline-item">
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL"
+                                                    target="_blank" rel="noopener noreferrer"
+                                                    aria-label="Share on Facebook">
+                                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                                </a>
                                             </li>
-                                        @endforeach
-                                    </ul>
+                                            <li class="list-inline-item">
+                                                <a href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL&text=Check%20this%20out!"
+                                                    target="_blank" rel="noopener noreferrer"
+                                                    aria-label="Share on Twitter">
+                                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="https://www.pinterest.com/pin/create/button/?url=YOUR_PAGE_URL"
+                                                    target="_blank" rel="noopener noreferrer"
+                                                    aria-label="Share on Pinterest">
+                                                    <i class="fab fa-pinterest-p" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="https://plus.google.com/share?url=YOUR_PAGE_URL"
+                                                    target="_blank" rel="noopener noreferrer"
+                                                    aria-label="Share on Google Plus">
+                                                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <div class="col-lg-12">
-                                <form action="{{ route('submit.comment') }}" method="POST">
-                                    @csrf
-                                    <h4 class="mb-4">Write a comment</h4>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input class="form-control" type="text" name="name" id="name"
-                                                    placeholder="Name" required>
+
+                        <div class="col-lg-12 mb-5">
+                            <div class="comment-area card border-0 p-5">
+                                <h4 class="mb-4">{{ $comments->count() }} Comments</h4>
+                                <ul class="comment-tree list-unstyled">
+                                    @foreach($comments as $comment)
+                                        <li class="mb-5">
+                                            <div class="comment-area-box">
+
+
+                                                <h5 class="mb-1">{{ $comment->name }}</h5>
+
+
+                                                <div
+                                                    class="comment-meta mt-4 mt-lg-0 mt-md-0 float-lg-right float-md-right">
+                                                    <a><i class="icofont-reply mr-2 text-muted"></i>Reply |</a>
+                                                    <span class="date-comm">Posted
+                                                        {{ $comment->created_at->format('F d, Y') }}</span>
+                                                </div>
+
+                                                <div class="comment-content mt-3">
+                                                    <p>{{ $comment->comment }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input class="form-control" type="text" name="email" id="email"
-                                                    placeholder="Enter Email" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <textarea class="form-control mb-3" name="comment" id="comment" cols="30" rows="5"
-                                        placeholder="Comment" required></textarea>
-
-                                    <input class="btn btn-main btn-round-full" type="submit" name="submit-contact"
-                                        id="submit_contact" value="Submit Message"
-                                        style="background-color: #28a745; color: white;">
-
-                                </form>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="sidebar-wrap">
 
 
+                        <div class="col-lg-12">
+                            <form action="{{ route('submit.comment') }}" method="POST">
+                                @csrf
+                                <h4 class="mb-4">Write a comment</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" name="name" id="name"
+                                                placeholder="Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" name="email" id="email"
+                                                placeholder="Enter Email" required>
+                                        </div>
+                                    </div>
+                                </div>
 
 
+                                <textarea class="form-control mb-3" name="comment" id="comment" cols="30" rows="5"
+                                    placeholder="Comment" required></textarea>
 
+                                <input class="btn btn-main btn-round-full" type="submit" name="submit-contact"
+                                    id="submit_contact" value="Submit Message"
+                                    style="background-color: #28a745; color: white;">
 
-                            <div class="sidebar-widget bg-white rounded tags p-4 mb-3">
-                                <h5 class="mb-4">Tags</h5>
-
-                                <a href="#">{{ $blog->tags }}</a>
-
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+              
             </div>
-        </section>
+    </div>
+    </section>
 
 
 
