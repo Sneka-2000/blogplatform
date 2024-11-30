@@ -79,8 +79,9 @@
                                     <input type="file" name="image" class="form-control" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="tags">Add Tags:</label>
-                                    <input data-role="tagsinput" type="text" name="tags" >  
+                                    <label for="tags">Add Tags:<span>(Please Insert a Tilde symbol
+                                    for Ending)</span></label>
+                                    <input type="text" id="tags" name="tags" placeholder="Add tags separated by commas" required>
                                 </div>
 
                             
