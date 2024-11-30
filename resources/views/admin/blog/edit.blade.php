@@ -81,7 +81,7 @@
                             </script>
 
                             <div class="mb-3">
-                                <label for="tags" class="form-label">Tags:</label>
+                                <label for="tags" class="form-label">Tags:<span>(Please Insert a Tilde symbol for Ending)</span></label>
                                 <input type="text" name="tags"
                                     value="{{ old('tags', $blog->tags) }}"
                                     class="form-control" required>
