@@ -184,12 +184,19 @@
                                 Blog
                             </a>
 
-
-                        </li>
-                        <li class="nav-item">
+                            <li class="nav-item">
                             @if(Route::has('login'))
                                 @auth
+                                    @if(Auth::user()->role === 'admin')
+                        <li><a href="{{ route('admin.dashboard') }}" class="nav-link">Admin
+                                Dashboard</a></li>
+                    @elseif(Auth::user()->role === 'author')
+                        <li><a href="{{ route('author.dashboard') }}" class="nav-link">Author Dashboard</a>
+                        </li>
+                    @else
                         <li><a href="{{ url('/') }}" class="nav-link">Home</a></li>
+                        @endif
+
                         <li>
                             <form action="{{ route('logout') }}" method="POST"
                                 style="display:inline;">
@@ -207,8 +214,9 @@
                         @endif
                         @endauth
                         @endif
-
                         </li>
+
+                      
                     </ul>
                 </div>
             </div>
@@ -405,7 +413,16 @@
                         </div>
                     </div>
                 </div>
-              
+                <div class="col-lg-4">
+                    <div class="sidebar-wrap">
+
+
+
+
+
+
+                    </div>
+                </div>
             </div>
     </div>
     </section>
