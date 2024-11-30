@@ -25,7 +25,7 @@
                                 <div class="dropdown">
                                     <a href="{{ route('author.create') }}" class="btn btn-light"
                                         style="background-color: #add8e6; color: #000;">
-                                        Create New Product
+                                        Create New Blog
                                     </a>
                                 </div>
 
